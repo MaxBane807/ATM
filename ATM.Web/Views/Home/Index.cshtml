@@ -1,0 +1,20 @@
+﻿@model ATM.Web.ViewModels.AtmViewModel
+
+
+<div class="text-center">
+    <h1 class="display-4">APM</h1>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <input type="number" asp-for="@Model.ValueRequested" />
+        <input class="btn btn-primary" type="submit" value="Withdraw" />
+    </form>
+
+    <div asp-validation-summary="ModelOnly">
+
+    </div>
+
+    <h3>Your Withdrawn Bills:</h3>
+    @foreach (var bill in Model.BillsGivenOut)
+    {
+        <p>@bill.Amount x @bill.Value</p>
+    }
+</div>
