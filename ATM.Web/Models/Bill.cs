@@ -7,6 +7,7 @@ namespace ATM.Web.Models
 {
     public class Bill
     {
+        public int Id { get; set; }
         public int Value { get; set; }
         public int Amount { get; set; }
     }
