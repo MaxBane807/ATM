@@ -1,5 +1,8 @@
 ﻿@model ATM.Web.ViewModels.AtmViewModel
 
+    <div asp-validation-summary="ModelOnly">
+
+    </div>
 
 <div class="text-center">
     <h1 class="display-4">ATM</h1>
@@ -8,9 +11,7 @@
         <input class="btn btn-primary" type="submit" value="Withdraw" />
     </form>
 
-    <div asp-validation-summary="ModelOnly">
-
-    </div>
+    
 
     <h3>Your Withdrawn Bills:</h3>
     @foreach (var bill in Model.BillsGivenOut)
