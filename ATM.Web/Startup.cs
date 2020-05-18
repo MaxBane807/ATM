@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ATM.Web.Services.Interfaces;
 using ATM.Web.Services.Classes;
+using ATM.Web.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ATM.Web
 {
@@ -25,8 +27,11 @@ namespace ATM.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<IData, Data>();
             services.AddTransient<ICalculator, Calculator>();
+            services.AddTransient<IBillRepository, BillRepository>();
+            services.AddDbContext<AtmContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
